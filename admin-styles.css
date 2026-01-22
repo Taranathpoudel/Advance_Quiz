@@ -1,0 +1,551 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    overflow: auto;
+}
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+    color: white;
+}
+
+.admin-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.header {
+    flex: 0 0 auto;
+    margin-bottom: 20px;
+}
+
+.content {
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Form styles */
+.form-section {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #ddd;
+}
+
+input[type="text"],
+input[type="number"],
+textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
+    font-size: 1em;
+}
+
+button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    background: #4CAF50;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background: #45a049;
+    transform: translateY(-2px);
+}
+
+/* Question list */
+.questions-list {
+    flex: 1;
+    overflow-y: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 10px;
+}
+
+.question-card {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+}
+
+.question-card h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.1em;
+}
+
+.question-card p {
+    margin: 5px 0;
+    font-size: 0.9em;
+    color: #ddd;
+}
+
+/* Media queries */
+@media (max-height: 768px) {
+    .header {
+        margin-bottom: 10px;
+    }
+    
+    .form-section {
+        padding: 15px;
+    }
+    
+    .form-group {
+        margin-bottom: 10px;
+    }
+    
+    input[type="text"],
+    input[type="number"],
+    textarea {
+        padding: 6px;
+    }
+    
+    .questions-list {
+        gap: 15px;
+    }
+    
+    .question-card {
+        padding: 12px;
+    }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+.admin-header {
+    text-align: center;
+    margin-bottom: 40px;
+    color: white;
+}
+
+.back-to-quiz {
+    display: inline-block;
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: white;
+    text-decoration: none;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    margin-top: 20px;
+}
+
+.back-to-quiz:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.admin-sections {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.admin-section {
+    padding: 30px;
+    border-radius: 15px;
+    color: white;
+}
+
+.admin-section h2 {
+    margin-bottom: 20px;
+    color: #4CAF50;
+}
+
+.team-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.team-form input {
+    padding: 12px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    backdrop-filter: blur(10px);
+}
+
+.team-form input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.admin-btn {
+    padding: 12px;
+    background: #4CAF50;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.admin-btn:hover {
+    background: #45a049;
+    transform: translateY(-2px);
+}
+
+.teams-list {
+    margin-top: 20px;
+}
+
+.team-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    margin-bottom: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.team-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.team-info {
+    flex: 1;
+    margin-right: 15px;
+}
+
+.team-name {
+    font-weight: bold;
+    font-size: 1.1em;
+    margin-bottom: 5px;
+}
+
+.team-members {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9em;
+    margin-bottom: 5px;
+}
+
+.team-score {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.scoreboard {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.score-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    backdrop-filter: blur(10px);
+}
+
+.score-team {
+    font-weight: bold;
+}
+
+.score-value {
+    font-size: 1.2em;
+    color: #4CAF50;
+}
+
+.score-input {
+    width: 60px;
+    padding: 4px 8px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 0.9em;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.score-input:focus {
+    outline: none;
+    border-color: rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.score-input::-webkit-inner-spin-button,
+.score-input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.score-input[type=number] {
+    -moz-appearance: textfield; /* Firefox */
+}
+
+@media (max-width: 768px) {
+    .admin-sections {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Game Management Styles */
+.game-controls {
+    padding: 1rem;
+    text-align: center;
+}
+
+.admin-btn.danger {
+    background: rgba(239, 68, 68, 0.2);
+    border: 2px solid #ef4444;
+    color: #ef4444;
+}
+
+.admin-btn.danger:hover {
+    background: rgba(239, 68, 68, 0.3);
+    transform: translateY(-2px);
+}
+
+.warning-text {
+    color: #ef4444;
+    font-size: 0.9em;
+    margin-top: 0.5rem;
+    opacity: 0.8;
+}
+
+.team-name-input,
+.team-members-input {
+    width: 100%;
+    padding: 8px;
+    margin: 4px 0;
+    border: 1px solid var(--glass-border);
+    border-radius: 6px;
+    background: var(--glass-bg);
+    color: var(--text-primary);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.team-name-input:hover,
+.team-members-input:hover {
+    border-color: var(--accent-color);
+}
+
+.team-name-input:focus,
+.team-members-input:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 2px rgba(var(--accent-rgb), 0.2);
+}
+
+.team-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.team-info input {
+    font-family: inherit;
+}
+
+/* Make sure score input aligns well with other inputs */
+.team-score {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.score-input {
+    width: 80px;
+    padding: 8px;
+    border: 1px solid var(--glass-border);
+    border-radius: 6px;
+    background: var(--glass-bg);
+    color: var(--text-primary);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.score-input:hover {
+    border-color: var(--accent-color);
+}
+
+.score-input:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 2px rgba(var(--accent-rgb), 0.2);
+}
+
+/* Add some spacing between team items */
+.team-item {
+    margin-bottom: 16px;
+    padding: 16px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.team-actions {
+    display: flex;
+    gap: 8px;
+}
+
+/* Live Control Room Styles */
+.active-monitor {
+    border: 1px solid #4CAF50;
+    box-shadow: 0 0 15px rgba(76, 175, 80, 0.2);
+}
+
+.live-status {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    margin-bottom: 25px;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+}
+
+.status-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.status-item .label {
+    font-size: 0.8em;
+    color: #aaa;
+    margin-bottom: 5px;
+}
+
+.status-item .value {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #4CAF50;
+}
+
+.control-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.control-group h3 {
+    margin-top: 0;
+    font-size: 1em;
+    color: #ddd;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.btn-group {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.btn-group.vertical {
+    flex-direction: column;
+}
+
+.timer-btn {
+    flex: 1;
+    min-width: 60px;
+}
+
+.mt-2 {
+    margin-top: 10px;
+}
+
+.admin-btn.warning {
+    background: #ff9800;
+}
+
+.admin-btn.warning:hover {
+    background: #f57c00;
+}
+
+.admin-btn.info {
+    background: #2196F3;
+}
+
+.admin-btn.info:hover {
+    background: #1976D2;
+}
+
+/* History Log Styles */
+.history-log {
+    max-height: 300px;
+    overflow-y: auto;
+    font-size: 0.9em;
+}
+
+.log-item {
+    padding: 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: space-between;
+}
+
+.log-item:last-child {
+    border-bottom: none;
+}
+
+.log-time {
+    color: #888;
+    margin-right: 10px;
+}
+
+.log-action.ADD {
+    color: #4CAF50;
+}
+
+.log-action.DEDUCT {
+    color: #f44336;
+}

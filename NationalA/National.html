@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>नेपाली राष्ट्रिय गान</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="national-anthem-page">
+    <!-- Particle effect container -->
+    <div id="particles-js"></div>
+    
+    <div class="anthem-wrapper">
+        <main class="anthem-container">
+            <!-- Header with flags -->
+            <header class="flag-section animate__animated animate__fadeInDown">
+                <div class="flag-container">
+                    <img src="../Pictures/nepal-flag.gif" alt="Nepal Flag" class="flag-image nepal-flag">
+                    <div class="glow-effect"></div>
+                </div>
+                <h1 class="anthem-title shine-text">नेपाली राष्ट्रिय गान</h1>
+                <div class="flag-container">
+                    <img src="../Pictures/Nisan.png" alt="Nishan Chap" class="flag-image nisan-flag">
+                    <div class="glow-effect"></div>
+                </div>
+            </header>
+
+            <!-- Lyrics Display with wave effect -->
+            <div class="lyrics-section animate__animated animate__fadeIn">
+                <div class="wave-top"></div>
+                <div class="lyrics-container glass-effect">
+                    <div id="subtitle" class="lyrics-text"></div>
+                </div>
+                <div class="wave-bottom"></div>
+            </div>
+
+            <!-- Modern Audio Player -->
+            <div class="audio-player glass-effect animate__animated animate__fadeInUp">
+                <div class="player-visualization">
+                    <div class="visualizer-bar"></div>
+                    <div class="visualizer-bar"></div>
+                    <div class="visualizer-bar"></div>
+                    <div class="visualizer-bar"></div>
+                    <div class="visualizer-bar"></div>
+                </div>
+                
+                <div class="progress-bar" id="progressBar">
+                    <div class="progress" id="progress"></div>
+                </div>
+                
+                <div class="audio-controls">
+                    <button class="play-pause-btn" id="playPauseBtn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M8 5v14l11-7z"/>
+                        </svg>
+                    </button>
+                    <div class="time-display">
+                        <span id="currentTime">0:00</span>
+                        <span class="time-separator">/</span>
+                        <span id="duration">0:00</span>
+                    </div>
+                </div>
+                <audio id="anthem" src="../Audios/Nepalianthom.MP3"></audio>
+            </div>
+
+            <!-- Keyboard shortcuts info -->
+            <div class="shortcuts-info animate__animated animate__fadeIn">
+                <p>Press <kbd>P</kbd> to Play/Pause | <kbd>Q</kbd> to Return to Quiz</p>
+            </div>
+        </main>
+    </div>
+
+    <!-- Particle.js for background effects -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

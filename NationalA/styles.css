@@ -1,0 +1,289 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+:root {
+    --nepal-red: #dc143c;
+    --nepal-blue: #003893;
+    --glass-bg: rgba(255, 255, 255, 0.1);
+    --glass-border: rgba(255, 255, 255, 0.2);
+    --glass-shadow: rgba(0, 0, 0, 0.1);
+}
+
+/* Base styles */
+.national-anthem-page {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+    color: white;
+    overflow-x: hidden;
+    background: linear-gradient(135deg, #000428, #004e92);
+    position: relative;
+}
+
+/* Particles container */
+#particles-js {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+/* Main container */
+.anthem-wrapper {
+    position: relative;
+    z-index: 2;
+    padding: 2rem;
+}
+
+.anthem-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Flag section */
+.flag-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4rem;
+    gap: 2rem;
+}
+
+.flag-container {
+    position: relative;
+    perspective: 1000px;
+}
+
+.flag-image {
+    transition: transform 0.5s ease;
+    transform-style: preserve-3d;
+}
+
+.nepal-flag {
+    width: 192px;
+    height: 256px;
+    object-fit: contain;
+}
+
+.nisan-flag {
+    width: 430px;
+    height: 256px;
+    object-fit: contain;
+}
+
+.flag-container:hover .flag-image {
+    transform: rotateY(10deg) scale(1.05);
+}
+
+.glow-effect {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.2), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.flag-container:hover .glow-effect {
+    opacity: 1;
+}
+
+/* Title styles */
+.anthem-title {
+    font-size: 3.5rem;
+    font-weight: bold;
+    text-align: center;
+    margin: 0;
+    background: linear-gradient(90deg, 
+        var(--nepal-red) 0%, 
+        #ffffff 50%,
+        var(--nepal-red) 100%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shine 3s linear infinite;
+}
+
+/* Glass effect */
+.glass-effect {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: 1rem;
+    box-shadow: 0 8px 32px var(--glass-shadow);
+}
+
+/* Lyrics section */
+.lyrics-section {
+    position: relative;
+    margin: 4rem 0;
+}
+
+.lyrics-container {
+    padding: 2rem;
+    margin: 0 auto;
+    max-width: 800px;
+    position: relative;
+    overflow: hidden;
+}
+
+.lyrics-text {
+    font-size: 2rem;
+    text-align: center;
+    min-height: 120px;
+    transition: all 0.7s ease-in-out;
+    opacity: 0;
+}
+
+/* Wave effects */
+.wave-top, .wave-bottom {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background: url('data:image/svg+xml,<svg viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg"><path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" fill="rgba(255,255,255,0.1)"/></svg>') repeat-x;
+    background-size: 1200px 100%;
+}
+
+.wave-top {
+    top: -25px;
+    animation: wave 10s linear infinite;
+}
+
+.wave-bottom {
+    bottom: -25px;
+    animation: wave 8s linear infinite reverse;
+    transform: rotate(180deg);
+}
+
+/* Audio player */
+.audio-player {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 1.5rem;
+    position: relative;
+}
+
+.player-visualization {
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+    margin-bottom: 1rem;
+    height: 40px;
+}
+
+.visualizer-bar {
+    width: 4px;
+    background: var(--glass-border);
+    border-radius: 2px;
+    animation: visualizer 1s ease infinite;
+}
+
+.visualizer-bar:nth-child(1) { animation-delay: 0.2s; }
+.visualizer-bar:nth-child(2) { animation-delay: 0.4s; }
+.visualizer-bar:nth-child(3) { animation-delay: 0.6s; }
+.visualizer-bar:nth-child(4) { animation-delay: 0.8s; }
+.visualizer-bar:nth-child(5) { animation-delay: 1.0s; }
+
+.progress-bar {
+    width: 100%;
+    height: 6px;
+    background: var(--glass-bg);
+    border-radius: 3px;
+    cursor: pointer;
+    margin-bottom: 1rem;
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    background: linear-gradient(90deg, var(--nepal-red), var(--nepal-blue));
+    border-radius: 3px;
+    transition: width 0.1s linear;
+}
+
+.audio-controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.play-pause-btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.play-pause-btn:hover {
+    background: var(--glass-border);
+    transform: scale(1.05);
+}
+
+.time-display {
+    font-size: 14px;
+    color: white;
+    display: flex;
+    gap: 0.5rem;
+}
+
+/* Keyboard shortcuts info */
+.shortcuts-info {
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+kbd {
+    background: var(--glass-bg);
+    padding: 2px 6px;
+    border-radius: 4px;
+    border: 1px solid var(--glass-border);
+    font-family: monospace;
+}
+
+/* Animations */
+@keyframes shine {
+    0% { background-position: -100% 0; }
+    100% { background-position: 200% 0; }
+}
+
+@keyframes wave {
+    0% { background-position-x: 0; }
+    100% { background-position-x: 1200px; }
+}
+
+@keyframes visualizer {
+    0%, 100% { height: 10px; }
+    50% { height: 40px; }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .flag-section {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .anthem-title {
+        font-size: 2.5rem;
+    }
+    
+    .lyrics-text {
+        font-size: 1.5rem;
+    }
+}

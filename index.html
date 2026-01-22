@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Interactive Quiz Competition by Kisan Polytechnique Institute" />
+  <title>Quiz</title>
+  <link rel="icon" type="image/x-icon" href="Pictures/quiz.png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <div class="background-animation">
+    <div class="gradient-sphere"></div>
+    <div class="gradient-sphere"></div>
+    <div class="gradient-sphere"></div>
+  </div>
+
+  <div class="app-container">
+    <!-- Home Page -->
+    <section id="homePage" class="home-page">
+      <div class="hero-section">
+        <div class="logo-container">
+          <div class="logo-circle">
+            <img src="Pictures/ctevt.png" alt="Quiz Logo" class="logo-image" style="border-radius: 3cm; width: 4cm" />
+          </div>
+        </div>
+        <div class="hero-content">
+          <div class="text-reveal">
+            <div class="institute-name">
+              Council For Education & Vocational Training
+            </div>
+            <div class="quiz-subtitle">Interactive Quiz Competition</div>
+            <h1>Kisan Polytechnic Institute</h1>
+
+            <h2 class="author"
+              style="font-size: 3.5rem; position: relative; text-align: center; padding: 30px 20px; height: 150px; display: flex; justify-content: center; align-items: center;">
+              <div class="text-wrapper" style="position: absolute;">
+                <span style="
+                        background: linear-gradient(90deg, #ff0000, #00ff00, #0000ff, #ff0000);
+                        background-size: 400% 400%;
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: transparent;
+                        font-weight: 900;
+                        font-family: 'Arial Black', sans-serif;
+                        letter-spacing: 4px;
+                        display: inline-block;
+                        animation: gradient 3s ease infinite, alternate-text 10s ease-in-out infinite;
+                        text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);">#Welcome!</span>
+              </div>
+              <div class="text-wrapper" style="position: absolute;">
+                <span style="
+                        background: linear-gradient(90deg, #ff0000, #00ff00, #0000ff, #ff0000);
+                        background-size: 400% 400%;
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: transparent;
+                        font-weight: 900;
+                        font-family: 'Arial Black', sans-serif;
+                        letter-spacing: 4px;
+                        display: inline-block;
+                        font-size: 2.5rem;
+                        animation: gradient 3s ease infinite, alternate-text 10s ease-in-out infinite reverse;
+                        text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);">37th ANNUAL CTEVT DAY</span>
+              </div>
+            </h2>
+
+            <style>
+              @keyframes gradient {
+                0% {
+                  background-position: 0% 50%;
+                }
+
+                50% {
+                  background-position: 100% 50%;
+                }
+
+                100% {
+                  background-position: 0% 50%;
+                }
+              }
+
+              @keyframes bounce {
+                from {
+                  transform: translateY(0px);
+                }
+
+                to {
+                  transform: translateY(-10px);
+                }
+              }
+
+              @keyframes alternate-text {
+
+                0%,
+                45% {
+                  opacity: 1;
+                  transform: translateY(0);
+                }
+
+                50%,
+                95% {
+                  opacity: 0;
+                  transform: translateY(20px);
+                }
+
+                100% {
+                  opacity: 1;
+                  transform: translateY(0);
+                }
+              }
+
+              @keyframes glow {
+                from {
+                  text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+                }
+
+                to {
+                  text-shadow: 0 0 30px rgba(255, 255, 255, 0.8);
+                }
+              }
+            </style>
+          </div>
+        </div>
+      </div>
+
+      <div class="leaderboard-section">
+        <button id="showLeaderboardBtn" class="action-btn glow-on-hover">
+          <i class="fas fa-trophy"></i> View Live Leaderboard
+        </button>
+      </div>
+
+      <div class="categories-section">
+        <h2 class="glow-text" id="categoriesTitle">Select Your Categories</h2>
+        <div id="categories" class="categories-grid">
+          <!-- Categories will be added here dynamically -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Winners Modal -->
+    <div class="modal-overlay" id="modalOverlay"></div>
+    <div class="winners-modal" id="winnersModal">
+      <button class="modal-close" onclick="closeWinnersModal()">
+        <i class="fas fa-times"></i>
+      </button>
+      <h2>Leaderboard 🏆</h2>
+      <div id="winnersList">
+        <!-- Winners will be added here dynamically -->
+      </div>
+    </div>
+
+    <!-- Question Page -->
+    <section id="questionPage" class="question-page">
+      <div class="question-header glass-morphism">
+        <div class="teams-score-section">
+          <div class="team-scoring-groups">
+            <!-- Team buttons will be dynamically added by JavaScript -->
+          </div>
+        </div>
+        <div class="timer-section">
+          <div class="timer-display">
+            <i class="fas fa-clock"></i>
+            <span id="timer">30 S</span>
+          </div>
+          <div class="timer-controls">
+            <button id="firstTimerButton" class="timer-btn neon-border">
+              <i class="fas fa-stopwatch"></i>
+              <span>30s</span>
+            </button>
+            <button id="secondTimerButton" class="timer-btn neon-border">
+              <i class="fas fa-stopwatch"></i>
+              <span>15s</span>
+            </button>
+            <button id="thirdTimerButton" class="timer-btn neon-border">
+              <i class="fas fa-stopwatch"></i>
+              <span>10s</span>
+            </button>
+            <button id="forthTimerButton" class="timer-btn neon-border">
+              <i class="fas fa-infinity"></i>
+              <span>AQ</span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="question-content">
+        <div class="question-card glass-morphism">
+          <div class="card-header">
+            <div class="progress-bar">
+              <div class="progress-fill"></div>
+            </div>
+          </div>
+          <h2 id="questionTitle" class="fade-in"></h2>
+          <div class="media-content">
+            <img id="questionImage" class="zoom-fade" alt="Question Image" />
+            <audio id="questionAudio" class="custom-audio" controls></audio>
+          </div>
+        </div>
+
+        <div class="answer-section">
+          <div id="answerDisplay" class="answer-card glass-morphism slide-up"></div>
+          <div id="timefinish" class="timeoff"></div>
+        </div>
+
+        <button id="homeButton" class="home-btn floating">
+          <i class="fas fa-home"></i>
+          <span id="return-home-button">Return Home</span>
+        </button>
+      </div>
+    </section>
+  </div>
+
+  <!-- Leaderboard Modal -->
+  <div id="leaderboardModal" class="leaderboard-modal">
+    <div class="leaderboard-content glass-morphism">
+      <button class="close-leaderboard" id="closeLeaderboardBtn">&times;</button>
+      <h2 class="modal-title"><i class="fas fa-trophy"></i> Live Standings</h2>
+      <div id="mainPageScoreboard" class="scoreboard-grid">
+        <!-- Dynamic Content moved here -->
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
